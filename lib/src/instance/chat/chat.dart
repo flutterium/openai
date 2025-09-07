@@ -98,7 +98,12 @@ interface class OpenAIChat implements OpenAIChatBase {
         if (topP != null) "top_p": topP,
         if (n != null) "n": n,
         if (stop != null) "stop": stop,
-        if (maxTokens != null) "max_tokens": maxTokens,
+        if (maxTokens != null) ...{
+          if (model.startsWith("gpt-3.5") || model.startsWith("gpt-4"))
+            "max_tokens": maxTokens
+          else
+            "max_completion_tokens": maxTokens,
+        },
         if (presencePenalty != null) "presence_penalty": presencePenalty,
         if (frequencyPenalty != null) "frequency_penalty": frequencyPenalty,
         if (logitBias != null) "logit_bias": logitBias,
@@ -194,7 +199,12 @@ interface class OpenAIChat implements OpenAIChatBase {
         if (topP != null) "top_p": topP,
         if (n != null) "n": n,
         if (stop != null) "stop": stop,
-        if (maxTokens != null) "max_tokens": maxTokens,
+        if (maxTokens != null) ...{
+          if (model.startsWith("gpt-3.5") || model.startsWith("gpt-4"))
+            "max_tokens": maxTokens
+          else
+            "max_completion_tokens": maxTokens,
+        },
         if (presencePenalty != null) "presence_penalty": presencePenalty,
         if (frequencyPenalty != null) "frequency_penalty": frequencyPenalty,
         if (logitBias != null) "logit_bias": logitBias,
@@ -241,7 +251,12 @@ interface class OpenAIChat implements OpenAIChatBase {
         if (topP != null) "top_p": topP,
         if (n != null) "n": n,
         if (stop != null) "stop": stop,
-        if (maxTokens != null) "max_tokens": maxTokens,
+        if (maxTokens != null) ...{
+          if (model.startsWith("gpt-3.5") || model.startsWith("gpt-4"))
+            "max_tokens": maxTokens
+          else
+            "max_completion_tokens": maxTokens,
+        },
         if (presencePenalty != null) "presence_penalty": presencePenalty,
         if (frequencyPenalty != null) "frequency_penalty": frequencyPenalty,
         if (logitBias != null) "logit_bias": logitBias,

@@ -126,7 +126,12 @@ interface class OpenAICompletion implements OpenAICompletionBase {
         "model": model,
         if (prompt != null) "prompt": prompt,
         if (suffix != null) "suffix": suffix,
-        if (maxTokens != null) "max_tokens": maxTokens,
+        if (maxTokens != null) ...{
+          if (model.startsWith("gpt-3.5") || model.startsWith("gpt-4"))
+            "max_tokens": maxTokens
+          else
+            "max_completion_tokens": maxTokens,
+        },
         if (temperature != null) "temperature": temperature,
         if (topP != null) "top_p": topP,
         if (n != null) "n": n,
@@ -242,7 +247,12 @@ interface class OpenAICompletion implements OpenAICompletionBase {
         'stream': true,
         if (prompt != null) "prompt": prompt,
         if (suffix != null) "suffix": suffix,
-        if (maxTokens != null) "max_tokens": maxTokens,
+        if (maxTokens != null) ...{
+          if (model.startsWith("gpt-3.5") || model.startsWith("gpt-4"))
+            "max_tokens": maxTokens
+          else
+            "max_completion_tokens": maxTokens,
+        },
         if (temperature != null) "temperature": temperature,
         if (topP != null) "top_p": topP,
         if (n != null) "n": n,
